@@ -1,9 +1,9 @@
 <img src="https://bit.ly/2VnXWr2" alt="Ironhack Logo" width="100"/>
 
-# Title of My Project
-*[Your Name]*
+# Predict Rock Injectivity
+*Erwan de Boisjolly*
 
-*[Your Cohort, Campus & Date]*
+*[Data analytics bootcamp - Barcelona - June 2020]*
 
 ## Content
 - [Project Description](#project-description)
@@ -19,32 +19,44 @@
 - [Links](#links)
 
 ## Project Description
-Write a short description of your project: 3-5 sentences about what your project is about, why you chose this topic (if relevant), and what you are trying to show.
+This project is about predicting rock injectivity: capacity of a rock formation to be fractured. The goal is to predict it from drilling parameters without being intrusive to the drilling process. The final application should allow to enhance completion design of the well.
 
 ## Hypotheses / Questions
-* What data/business/research/personal question you would like to answer?
-* What is the context for the question and the possible scientific or business application?
-* What are the hypotheses you would like to test in order to answer your question?  
-Frame your hypothesis with statistical/data languages (i.e. define Null and Alternative Hypothesis). You can use formulas if you want but that is not required.
+* Is it possible to model accurately rock injectivity from drilling parameters ?
+* What are the most important parameters to predict rock injectivity?
+* Do we need more variables ? Are the engineering features such as MSE (Mechanical Specific Energy) useful ?
 
 ## Dataset
-* Where did you get your data? If you downloaded a dataset (either public or private), describe where you downloaded it and include the command to load the dataset.
-* Did you build your own datset? If so, did you use an API or a web scraper? PRovide the relevant scripts in your repo.
-* For all types of datasets, provide a description of the size, complexity, and data types included in your dataset, as well as a schema of the tables if necessary.
-* If the question cannot be answered with the available data, why not? What data would you need to answer it better?
+* Data comes from a shale gas well on which a data science project was already performed to predict torque on bit. This project reuse the same data. Data were already anonymised as a consequence of the previous project. Any remaining information that could relate the data to the client or the well were deleted.
+* Data are time series but the time variable is not useful for the study. Data comes with 5 second sampling rate and include basic drilling parameters commonly acquired in every drilling.
+* One additional feature and the labels comes from different logs that are depth based.
+* Raw data are stored in the data folder of the repository and are splitted in several excel files:
+	1. BHA8_lateral.xlsx
+	2. GR_injectivity.xlsx
 
-## Cleaning
-Describe your full process of data wrangling and cleaning. Document why you chose to fill missing values, extract outliers, or create the variables you did as well as your reasoning behind the process.
+## Cleaning, filtering & wrangling
+Data comes time based because the sensors of the drilling rig (platform) are recording all the time.  For this project, drilling data are needed. However there are some times the rig stops the drilling process to perform some repair and maintenance. On those downtimes, sensors are still recording but we don't need those data. We need to segregate those data from the data while the rig is drilling the rock formation.
+To do this, unsupervised learning was performed using KMeans algorithm. One of the clusters detected by the algorithm was effectively the drilling data needed for the project.
+Fine tuning of the data filtering was done first using an Isolation Forest algorithm. However there were les than 1% noise so the few remaining outliers were removed using manual filters.
+Finally, one additional feature and the labels were merge to the dataset. This final merge is responsible of a significant loss of data as the extra logs have a much lower resolution than the time data.  
 
 ## Analysis
-* Overview the general steps you went through to analyze your data in order to test your hypothesis.
-* Document each step of your data exploration and analysis.
-* Include charts to demonstrate the effect of your work.
-* If you used Machine Learning in your final project, describe your feature selection process.
+* Include charts to demonstrate the effect of your work: correlation matrix
+
+* After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
+* A shortlist of basic models were first train and evaluated on their scores. From this step, three models came out with good results:
+	1. RandomForestRegressor
+	2. KNearestNeighbors regressor
+	3. GradientBoostingRegressor
+* Feature selection was then performed using several algorithm: RandomForest feature importance attribute, ANOVA test, and RFE (recursive feature elimination). From this step, it was decided to drop three features that were downgrading models performances.
+One of the learnings on the feature selection is that surface parameter (in opposition to downhole parameters) are most correlated to the target. In fact, surface parameters have less noise, their evolution while drilling are less erratic than downhole parameters signals. For this reason correlation with the target is easier to evaluate. This can be an improvement for preprocessing downhole parameters.
 
 ## Model Training and Evaluation
-*Include this section only if you chose to include ML in your project.*
-* Describe how you trained your model, the results you obtained, and how you evaluated those results.
+* From the three most promising model mentioned above, hyper parameters  were fine-tuned using cross validation.
+
+Graphs scores
+
+* From the results above, ensemble methods were used to combined the cross validated models. Voting and stacking technics were evaluated and stacking turn to give the best score on the train set.
 
 ## Conclusion
 * Summarize your results. What do they mean?
