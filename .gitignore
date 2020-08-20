@@ -46,10 +46,10 @@ Temporary Items
 
 # Images
 
-.jpg
+*.jpg
 
 # Presentation
 
-.key
+*.key
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,jupyternotebooks
