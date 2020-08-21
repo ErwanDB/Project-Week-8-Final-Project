@@ -67,12 +67,9 @@ One of the learnings on the feature selection is that surface parameter (in oppo
 
 ## Conclusion
 
-Graph prediction
+<img src="https://github.com/ErwanDB/Project-Week-8-Final-Project/blob/master/your-project/Presentation/Predictions_stack.png?raw=true"/>
 
 * Good prediction of the model. According to learning curve, more data are needed. May be better label sampling can be provided by the logging company.
-
-Graph learning curve
-
 * MSE is definitely useful for the model. As specified earlier, Downhole parameters might be smoothed to be useful for the model.
 
 ## Future Work
@@ -100,7 +97,7 @@ The repository is organised in 3 folders:
 
 * Data: contains all the raw data and the data exports
 * Notebooks: contains two jupyter notebooks commented. One for data cleaning and wrangling. The second one for data merging, preprocessing and modelling.
-* Presentation: presentation of the project in pdf format.
+* Presentation: contains presentation of the project in pdf format and some pictures of graphs for the present README file and the presentation.
 
 ## Links
 
