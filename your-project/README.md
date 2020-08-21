@@ -45,7 +45,7 @@ Finally, one additional feature and the labels were merge to the dataset. This f
 
 ## Analysis
 
-<img src="https://github.com/ErwanDB/Project-Week-8-Final-Projectyour-project/Presentation/Correlation_matrix.png"/>
+<img src="https://github.com/ErwanDB/Project-Week-8-Final-Project/your-project/Presentation/Correlation_matrix.png"/>
 
 
 * After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
