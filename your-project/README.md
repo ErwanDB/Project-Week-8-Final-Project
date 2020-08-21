@@ -45,7 +45,8 @@ Finally, one additional feature and the labels were merge to the dataset. This f
 
 ## Analysis
 
-your-project/Presentation/Correlation_matrix.png
+<img src="https://github.com/ErwanDB/Project-Week-8-Final-Projectyour-project/Presentation/Correlation_matrix.png"/>
+
 
 * After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
 * A shortlist of basic models were first train and evaluated on their scores. From this step, three models came out with good results:
@@ -105,5 +106,4 @@ The repository is organised in 3 folders:
 ## Links
 
 [Repository](https://github.com/)  
-[Slides](https://slides.com/)  
-[Trello](https://trello.com/en)  
+[Trello](https://trello.com/b/eY9Ii6EU)  
