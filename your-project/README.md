@@ -36,16 +36,21 @@ This project is about predicting rock injectivity: capacity of a rock formation 
 
 ## Cleaning, filtering & wrangling
 Data comes time based because the sensors of the drilling rig (platform) are recording all the time.  For this project, drilling data are needed. However there are some times the rig stops the drilling process to perform some repair and maintenance. On those downtimes, sensors are still recording but we don't need those data. We need to segregate those data from the data while the rig is drilling the rock formation.
+
 To do this, unsupervised learning was performed using KMeans algorithm. One of the clusters detected by the algorithm was effectively the drilling data needed for the project.
+
 Fine tuning of the data filtering was done first using an Isolation Forest algorithm. However there were les than 1% noise so the few remaining outliers were removed using manual filters.
+
 Finally, one additional feature and the labels were merge to the dataset. This final merge is responsible of a significant loss of data as the extra logs have a much lower resolution than the time data.  
 
 ## Analysis
-/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/Correlation_matrix.png
+
+your-project/Presentation/Correlation_matrix.png
+
 * After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
 * A shortlist of basic models were first train and evaluated on their scores. From this step, three models came out with good results:
 	1. RandomForestRegressor
-	2. KNearestNeighbors regressor
+	2. KNearestNeighborsRegressor
 	3. GradientBoostingRegressor
 * Feature selection was then performed using several algorithm: RandomForest feature importance attribute, ANOVA test, and RFE (recursive feature elimination). From this step, it was decided to drop three features that were downgrading models performances.
 
@@ -61,25 +66,43 @@ One of the learnings on the feature selection is that surface parameter (in oppo
 /Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/final_scores.png
 
 ## Conclusion
-* Summarize your results. What do they mean?
-* What can you say about your hypotheses?
-* Interpret your findings in terms of the questions you try to answer.
+
+Graph prediction
+
+* Good prediction of the model. According to learning curve, more data are needed. May be better label sampling can be provided by the logging company.
+
+Graph learning curve
+
+* MSE is definitely useful for the model. As specified earlier, Downhole parameters might be smoothed to be useful for the model.
 
 ## Future Work
-Address any questions you were unable to answer, or any next steps or future extensions to your project.
+* Get better resolution for labels.
+* Try the model on an other well
+* Build pipeline for cleaning, filtering, preprocessing and model prediction
+* Enhance filtering of the time based data and preprocessing of the downhole parameters.
+
 
 ## Workflow
-Outline the workflow you used in your project. What were the steps?
-How did you test the accuracy of your analysis and/or machine learning algorithm?
+The main steps of the workflow used to lead this project are listed below:
+* Frame the Problem and Look at the Big Picture
+* Get the Data
+* Explore the Data
+* Prepare the Data
+* Shortlist Promising Models
+* Fine-Tune the System
+
+As the problem is a regression problem, accuracy of the models were evaluated using the r2 coefficient.
 
 ## Organization
-How did you organize your work? Did you use any tools like a trello or kanban board?
+Project was organised using a Trello board (link below)
 
-What does your repository look like? Explain your folder and file structure.
+The repository is organised in 3 folders:
+
+* Data: contains all the raw data and the data exports
+* Notebooks: contains two jupyter notebooks commented. One for data cleaning and wrangling. The second one for data merging, preprocessing and modelling.
+* Presentation: presentation of the project in pdf format.
 
 ## Links
-Include links to your repository, slides and trello/kanban board. Feel free to include any other links associated with your project.
-
 
 [Repository](https://github.com/)  
 [Slides](https://slides.com/)  
