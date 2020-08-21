@@ -47,9 +47,7 @@ Finally, one additional feature and the labels were merge to the dataset. This f
 
 <img src="https://github.com/ErwanDB/Project-Week-8-Final-Project/blob/master/your-project/Presentation/Correlation_matrix.png?raw=true"/>
 
-https://github.com/ErwanDB/Project-Week-8-Final-Project/blob/master/your-project/Presentation/Correlation_matrix.png?raw=true
-
-* After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
+* After dropping non-useful columns (Bit depth, hook height, etc), feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
 * A shortlist of basic models were first train and evaluated on their scores. From this step, three models came out with good results:
 	1. RandomForestRegressor
 	2. KNearestNeighborsRegressor
@@ -61,11 +59,11 @@ One of the learnings on the feature selection is that surface parameter (in oppo
 ## Model Training and Evaluation
 * From the three most promising model mentioned above, hyper parameters  were fine-tuned using cross validation.
 
-/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/Cross_validation.png
+<img src="https://github.com/ErwanDB/Project-Week-8-Final-Project/blob/master/your-project/Presentation/Cross_validation.png?raw=true"/>
 
 * From the results above, ensemble methods were used to combined the cross validated models. Voting and stacking technics were evaluated and stacking turn to give the best score on the test set.
 
-/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/final_scores.png
+<img src="https://github.com/ErwanDB/Project-Week-8-Final-Project/blob/master/your-project/Presentation/final_scores.png?raw=true"/>
 
 ## Conclusion
 
