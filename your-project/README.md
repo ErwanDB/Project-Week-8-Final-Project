@@ -3,7 +3,7 @@
 # Predict Rock Injectivity
 *Erwan de Boisjolly*
 
-*[Data analytics bootcamp - Barcelona - June 2020]*
+*Data analytics bootcamp - Barcelona - June 2020*
 
 ## Content
 - [Project Description](#project-description)
@@ -41,22 +41,24 @@ Fine tuning of the data filtering was done first using an Isolation Forest algor
 Finally, one additional feature and the labels were merge to the dataset. This final merge is responsible of a significant loss of data as the extra logs have a much lower resolution than the time data.  
 
 ## Analysis
-* Include charts to demonstrate the effect of your work: correlation matrix
-
+/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/Correlation_matrix.png
 * After dropping non-useful columns, feature engineering was done adding three new features: DOC, MSE and DS. Features with high correlation were dropped.
 * A shortlist of basic models were first train and evaluated on their scores. From this step, three models came out with good results:
 	1. RandomForestRegressor
 	2. KNearestNeighbors regressor
 	3. GradientBoostingRegressor
 * Feature selection was then performed using several algorithm: RandomForest feature importance attribute, ANOVA test, and RFE (recursive feature elimination). From this step, it was decided to drop three features that were downgrading models performances.
+
 One of the learnings on the feature selection is that surface parameter (in opposition to downhole parameters) are most correlated to the target. In fact, surface parameters have less noise, their evolution while drilling are less erratic than downhole parameters signals. For this reason correlation with the target is easier to evaluate. This can be an improvement for preprocessing downhole parameters.
 
 ## Model Training and Evaluation
 * From the three most promising model mentioned above, hyper parameters  were fine-tuned using cross validation.
 
-Graphs scores
+/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/Cross_validation.png
 
-* From the results above, ensemble methods were used to combined the cross validated models. Voting and stacking technics were evaluated and stacking turn to give the best score on the train set.
+* From the results above, ensemble methods were used to combined the cross validated models. Voting and stacking technics were evaluated and stacking turn to give the best score on the test set.
+
+/Users/erwandeboisjolly/Documents/Ironhack/Projects/Project-Week-8-Final-Project/your-project/final_scores.png
 
 ## Conclusion
 * Summarize your results. What do they mean?
